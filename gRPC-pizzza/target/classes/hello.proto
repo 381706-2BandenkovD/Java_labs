@@ -1,0 +1,69 @@
+syntax = "proto3";
+package grpc;
+
+option java_multiple_files = true;
+option java_package = "grpc";
+option java_outer_classname = "EchoServiceProto";
+
+message pizzaRequest{
+
+}
+
+message pizzaResponse{
+    repeated int32 id = 1;
+    repeated string name = 2;
+}
+
+message newPizzaRequest{
+    string namepiz = 1;
+    string descr =2;
+    int32 cost =3;
+}
+
+message newPizzaResponse{
+    int32 ident = 1;
+}
+
+message delRequest{
+    int32 id = 1;
+}
+
+message delResponse{
+    string ans = 1;
+}
+
+message orderRequest{
+    int32 index = 1;
+    int32 numm = 2;
+}
+
+message orderResponse{
+    string ansver = 1;
+}
+
+message numRequest{
+    int32 number = 1;
+}
+
+message numResponse{
+    string status = 1;
+}
+
+message numEmplRequest{
+    int32 num = 1;
+    string stat = 2;
+}
+
+message numEmplResponse{
+    string change = 1;
+}
+
+
+service EchoService{
+    rpc pilist(pizzaRequest) returns (pizzaResponse){}
+    rpc pizadd(newPizzaRequest) returns (newPizzaResponse){}
+    rpc pidel(delRequest) returns (delResponse){}
+    rpc orderpizaa(orderRequest) returns (orderResponse){}
+    rpc numclient(numRequest) returns (numResponse){}
+    rpc numemployee(numEmplRequest) returns (numEmplResponse){}
+}
